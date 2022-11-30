@@ -1,12 +1,20 @@
 <script>
-import { store } from "../store";
+import SectionMovie from "../components/SectionMovie.vue";
+import SectionSeries from "../components/SectionSeries.vue";
+
 export default {
   name: "AppMain",
+  components: {
+    SectionMovie,
+    SectionSeries,
+  },
 };
 </script>
 
 <template>
-  <h1>Main</h1>
+  <SectionMovie />
+  <h2>SERIE</h2>
+  <SectionSeries />
 </template>
 
-<style lang="scss" scoped></style>
+<style></style>

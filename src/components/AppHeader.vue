@@ -1,11 +1,8 @@
 <script>
-import { store } from "../store";
-import SearchBar from "./SearchBar.vue";
+import { store } from "../store.js";
+
 export default {
   name: "AppHeader",
-  components: {
-    SearchBar,
-  },
   data() {
     return {
       store,
@@ -15,17 +12,14 @@ export default {
 </script>
 
 <template>
-  <h1>
-    <ul>
-      <li v-for="movie in store.movies">
-        {{ movie.title }}
-        <div>{{ movie.original_title }}</div>
-        <div>{{ movie.original_language }}</div>
-        <div>{{ movie.popularity }}</div>
-      </li>
-    </ul>
-    <SearchBar />
-  </h1>
+  <form @submit.prevent="$emit('cliccato')" action="">
+    <input
+      v-model="store.searchText"
+      type="text"
+      placeholder="Scrivi un film o una serie tv"
+    />
+    <button type="submit">Search</button>
+  </form>
 </template>
 
-<style lang="scss" scoped></style>
+<style></style>

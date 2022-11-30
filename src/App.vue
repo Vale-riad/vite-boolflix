@@ -1,41 +1,56 @@
 <script>
-import { store } from "./store";
-import axios from "axios";
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
-import SearchBar from "./components/SearchBar.vue";
+import AppFooter from "./components/AppFooter.vue";
+import { store } from "./store";
+import axios from "axios";
 
 export default {
   components: {
     AppHeader,
-    SearchBar,
     AppMain,
+    AppFooter,
   },
   data() {
     return {
       store,
     };
   },
-  created() {
-    axios
-      .get("https://api.themoviedb.org/3/search/movie", {
-        params: {
-          api_key: "96206fe9368a1ea12d46c2da62d78e08",
-          query: "ritorno al futuro",
-          language: "it-ITA",
-        },
-      })
-      .then((res) => {
-        this.store.movies = res.data.results;
-      });
+  methods: {
+    getMovies() {
+      axios
+        .get("https://api.themoviedb.org/3/search/movie", {
+          params: {
+            api_key: "f7b76ba2478549a1bce670920b20220b",
+            query: this.store.searchText,
+            language: "it-IT",
+          },
+        })
+        .then((res) => {
+          this.store.movies = res.data.results;
+        });
+      axios
+        .get("https://api.themoviedb.org/3/search/tv", {
+          params: {
+            api_key: "f7b76ba2478549a1bce670920b20220b",
+            query: this.store.searchText,
+            language: "it-IT",
+          },
+        })
+        .then((res) => {
+          this.store.series = res.data.results;
+          console.log(res.data.results);
+        });
+    },
   },
 };
 </script>
 
 <template>
-  <AppHeader />
-  <AppMain />
-  <SearchBar />
+  <div class="container">
+    <AppHeader @cliccato="getMovies" />
+    <AppMain />
+  </div>
 </template>
 
 <style lang="scss">
