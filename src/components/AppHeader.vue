@@ -17,7 +17,12 @@ export default {
 <template>
   <h1>
     <ul>
-      <li v-for="movie in store.movies">{{ movie.title }}</li>
+      <li v-for="movie in store.movies">
+        {{ movie.title }}
+        <div>{{ movie.original_title }}</div>
+        <div>{{ movie.original_language }}</div>
+        <div>{{ movie.popularity }}</div>
+      </li>
     </ul>
     <SearchBar />
   </h1>

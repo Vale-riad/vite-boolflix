@@ -21,8 +21,8 @@ export default {
       .get("https://api.themoviedb.org/3/search/movie", {
         params: {
           api_key: "96206fe9368a1ea12d46c2da62d78e08",
-          query: "",
-          language: "it-IT",
+          query: "ritorno al futuro",
+          language: "it-ITA",
         },
       })
       .then((res) => {
