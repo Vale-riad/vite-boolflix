@@ -18,7 +18,7 @@ export default {
         :src="`https://image.tmdb.org/t/p/w342${movie.poster_path} `"
         alt=""
       />
-      <div>{{ movie.title }}</div>
+      <h3>{{ movie.title }}</h3>
       <div v-if="movie.title != movie.original_title">
         {{ movie.original_title }}
       </div>
@@ -28,4 +28,4 @@ export default {
   </ul>
 </template>
 
-<style></style>
+<style lang="scss"></style>

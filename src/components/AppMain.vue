@@ -12,9 +12,14 @@ export default {
 </script>
 
 <template>
+  <h2>Film</h2>
   <SectionMovie />
   <h2>SERIE</h2>
   <SectionSeries />
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+img {
+  max-width: 100%;
+}
+</style>

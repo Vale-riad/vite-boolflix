@@ -1,5 +1,6 @@
 <script>
 import { store } from "../store.js";
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 export default {
   name: "SectionSeries",
@@ -8,24 +9,33 @@ export default {
       store,
     };
   },
+  methods: {
+    getFlag(lang) {
+      if (lang === "en") {
+        return "gb";
+      }
+    },
+  },
 };
 </script>
 
 <template>
-  <ul>
-    <li v-for="serie in store.series">
-      <img
-        :src="`https://image.tmdb.org/t/p/w342${serie.poster_path} `"
-        alt=""
-      />
-      <div>{{ serie.name }}</div>
-      <div v-if="serie.name != serie.original_name">
-        {{ serie.original_name }}
-      </div>
-      <div>{{ serie.original_language }}</div>
-      <div>{{ serie.vote_average }}</div>
-    </li>
-  </ul>
+  <div class="container">
+    <ul>
+      <li v-for="serie in store.series">
+        <img
+          :src="`https://image.tmdb.org/t/p/w342${serie.poster_path} `"
+          alt=""
+        />
+        <div>{{ serie.name }}</div>
+        <div v-if="serie.name != serie.original_name">
+          {{ serie.original_name }}
+        </div>
+        <span :class="`fi fi-${getFlag(serie.original_language)}`"></span>
+        <div>{{ serie.vote_average }}</div>
+      </li>
+    </ul>
+  </div>
 </template>
 
-<style></style>
+<style lang="scss"></style>
