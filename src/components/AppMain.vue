@@ -1,31 +1,32 @@
 <script>
 import { store } from "../store.js";
-import SectionMovie from "../components/SectionMovie.vue";
-import SectionSeries from "../components/SectionSeries.vue";
+
+import AppCard from "./AppCard.vue";
 
 export default {
   name: "AppMain",
+  components: {
+    AppCard,
+  },
   data() {
     return {
       store,
     };
   },
-  components: {
-    SectionMovie,
-    SectionSeries,
-  },
 };
 </script>
 
 <template>
-  <h2>Film</h2>
-  <SectionMovie />
-  <h2>SERIE</h2>
-  <SectionSeries />
+  <main>
+    <AppCard :details="movie" v-for="movie in store.movies" />
+
+    <AppCard :details="serie" v-for="serie in store.series" />
+  </main>
 </template>
 
 <style lang="scss" scoped>
-img {
-  max-width: 100%;
+main {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
