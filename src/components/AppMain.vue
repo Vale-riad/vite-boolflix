@@ -1,9 +1,15 @@
 <script>
+import { store } from "../store.js";
 import SectionMovie from "../components/SectionMovie.vue";
 import SectionSeries from "../components/SectionSeries.vue";
 
 export default {
   name: "AppMain",
+  data() {
+    return {
+      store,
+    };
+  },
   components: {
     SectionMovie,
     SectionSeries,

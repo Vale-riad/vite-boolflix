@@ -13,14 +13,12 @@ export default {
     getFlag(lang) {
       if (lang === "en") {
         return "gb";
-      } else if (string === "ko") {
+      } else if (lang === "ko") {
         return "kr";
-      } else return string;
+      } else return lang;
     },
-  },
-  computed: {
-    vote() {
-      return Math.ceil(this.store.vote_average / 2);
+    vote(serie) {
+      return Math.ceil(serie.vote_average / 2);
     },
   },
 };
@@ -39,7 +37,7 @@ export default {
           {{ serie.original_name }}
         </div>
         <span :class="`fi fi-${getFlag(serie.original_language)}`"></span>
-        <div>{{ vote }}</div>
+        <div>{{ vote(serie) }}</div>
       </li>
     </ul>
   </div>
