@@ -1,5 +1,6 @@
 <script>
 import { store } from "../store.js";
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 export default {
   name: "SectionMovie",
@@ -7,6 +8,15 @@ export default {
     return {
       store,
     };
+  },
+  methods: {
+    getFlag(lang) {
+      if (lang === "en") {
+        return "gb";
+      } else if (lang === "ko") {
+        return "kr";
+      } else return lang;
+    },
   },
 };
 </script>
@@ -22,7 +32,7 @@ export default {
       <div v-if="movie.title != movie.original_title">
         {{ movie.original_title }}
       </div>
-      <div>{{ movie.original_language }}</div>
+      <span :class="`fi fi-${getFlag(movie.original_language)}`"></span>
       <div>{{ movie.vote_average }}</div>
     </li>
   </ul>

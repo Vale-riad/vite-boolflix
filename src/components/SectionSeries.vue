@@ -13,7 +13,9 @@ export default {
     getFlag(lang) {
       if (lang === "en") {
         return "gb";
-      }
+      } else if (string === "ko") {
+        return "kr";
+      } else return string;
     },
   },
 };
