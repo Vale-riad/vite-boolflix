@@ -18,6 +18,11 @@ export default {
       } else return string;
     },
   },
+  computed: {
+    vote() {
+      return Math.ceil(this.store.vote_average / 2);
+    },
+  },
 };
 </script>
 
@@ -34,7 +39,7 @@ export default {
           {{ serie.original_name }}
         </div>
         <span :class="`fi fi-${getFlag(serie.original_language)}`"></span>
-        <div>{{ serie.vote_average }}</div>
+        <div>{{ vote }}</div>
       </li>
     </ul>
   </div>

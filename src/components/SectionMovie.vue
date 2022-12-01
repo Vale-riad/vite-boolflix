@@ -18,6 +18,11 @@ export default {
       } else return lang;
     },
   },
+  computed: {
+    vote() {
+      return Math.ceil(this.store.vote_average / 2);
+    },
+  },
 };
 </script>
 
@@ -33,7 +38,9 @@ export default {
         {{ movie.original_title }}
       </div>
       <span :class="`fi fi-${getFlag(movie.original_language)}`"></span>
-      <div>{{ movie.vote_average }}</div>
+      <div>{{ vote }}</div>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-regular fa-star"></i>
     </li>
   </ul>
 </template>
