@@ -48,8 +48,14 @@ export default {
       </ul>
     </div>
     <img
+      v-if="details.poster_path !== null"
       :src="`https://image.tmdb.org/t/p/w342${details.poster_path}`"
       alt=""
+    />
+    <img
+      v-else
+      src="https://via.placeholder.com/342x485/000"
+      :alt="details.title"
     />
   </div>
 </template>
@@ -100,6 +106,7 @@ export default {
   img {
     display: block;
     max-width: 100%;
+    height: 100%;
   }
 }
 </style>
