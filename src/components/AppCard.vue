@@ -50,9 +50,10 @@ export default {
     <img
       v-if="details.poster_path !== null"
       :src="`https://image.tmdb.org/t/p/w342${details.poster_path}`"
-      alt=""
+      :alt="details.title"
     />
     <img
+      class="place"
       v-else
       src="https://via.placeholder.com/342x485/000"
       :alt="details.title"
@@ -100,6 +101,10 @@ export default {
       }
       .overview {
         font-size: 12px;
+      }
+      img .place {
+        border-color: antiquewhite;
+        border: 2px solid;
       }
     }
   }
